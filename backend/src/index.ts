@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import cors from "cors";
 import { connectDB } from "./db";
 import webhookRouter from "./routes/webhook";
 import eventsRouter from "./routes/events";
@@ -7,6 +8,8 @@ const app = express();
 const PORT = 5000;
 
 connectDB();
+
+app.use(cors());
 
 app.use("/webhooks", webhookRouter);
 app.use("/events", eventsRouter);
