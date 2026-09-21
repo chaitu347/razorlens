@@ -1,6 +1,8 @@
 const crypto = require("crypto");
 
-const secret = "your_temporary_test_secret_123";
+const secret = "5331bc2987c6c68c141cb40b6731988164d3e8df42834d5af2b9aa73ebfcd3fa";
+const userId = "6ab10db4687112b337fe0cba";
+
 
 const payload = {
   event: "payment.captured",
@@ -22,7 +24,7 @@ const signature = crypto
   .update(body)
   .digest("hex");
 
-fetch("http://localhost:5000/webhooks/razorpay", {
+fetch(`http://localhost:5000/webhooks/razorpay/${userId}`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IEvent extends Document {
+  userId: string;
   provider: string;
   eventType: string;
   payload: any;
@@ -10,6 +11,7 @@ export interface IEvent extends Document {
 }
 
 const EventSchema: Schema = new Schema({
+  userId: { type: String, required: true },
   provider: { type: String, required: true },
   eventType: { type: String, required: true },
   payload: { type: Schema.Types.Mixed, required: true },
