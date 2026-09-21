@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Event {
   _id: string;
@@ -47,6 +48,9 @@ export default function Dashboard() {
   return (
     <main className="p-8">
       <h1 className="text-2xl font-bold mb-4">RazorLens — Webhook Events</h1>
+      <Link href="/settings" className="text-sm text-[#4C1D95] underline">
+          View your webhook URL & secret →
+      </Link>
 
       {events.length === 0 ? (
         <p>No events received yet.</p>

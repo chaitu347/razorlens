@@ -1,8 +1,9 @@
 import express, { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-import User from "../models/User";
 import jwt from "jsonwebtoken";
+import User from "../models/User";
+import { authMiddleware, AuthRequest } from "../middleware/auth";
 
 const router = express.Router();
 
@@ -34,8 +35,6 @@ router.post("/register", async (req: Request, res: Response) => {
   });
 });
 
-
-
 router.post("/login", async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
@@ -62,6 +61,20 @@ router.post("/login", async (req: Request, res: Response) => {
   res.status(200).json({
     message: "Login successful",
     token,
+    webhookSecret: user.webhookSecret,
+  });
+});
+
+router.get("/me", authMiddleware, async (req: AuthRequest, res: Response) => {
+  const user = await User.findById(req.userId);
+
+  if (!user) {
+    return res.status(404).send("User not found");
+  }
+
+  res.status(200).json({
+    userId: user._id,
+    email: user.email,
     webhookSecret: user.webhookSecret,
   });
 });
