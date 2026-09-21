@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.05); }
+}
+
+.animate-drift {
+  animation: drift 8s ease-in-out infinite;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #1b1330;
