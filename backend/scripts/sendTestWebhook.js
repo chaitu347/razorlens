@@ -1,17 +1,17 @@
 const crypto = require("crypto");
 
-const secret = "5331bc2987c6c68c141cb40b6731988164d3e8df42834d5af2b9aa73ebfcd3fa";
-const userId = "6ab10db4687112b337fe0cba";
+const secret = "2071438395de0cb870f315de4b33b6c2a04c3729dba8ae563cae4b11c74f06f7";
+const userId = "6ab149ee15a6339524a9ed9e";
 
 
 const payload = {
-  event: "payment.captured",
+  event: "refund.processed",
   payload: {
-    payment: {
+    refund: {
       entity: {
-        id: "pay_test123",
-        amount: 50000,
-        status: "captured",
+        id: "rfnd_test789",
+        amount: 15000,
+        status: "processed",
       },
     },
   },
