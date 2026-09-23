@@ -23,7 +23,7 @@ export default function SettingsPage() {
       return;
     }
 
-    fetch("http://localhost:5000/auth/me", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -43,7 +43,7 @@ export default function SettingsPage() {
   if (loading) return <p className="p-8">Loading...</p>;
   if (!userInfo) return <p className="p-8">Could not load your settings.</p>;
 
-  const webhookUrl = `http://localhost:5000/webhooks/razorpay/${userInfo.userId}`;
+ const webhookUrl = `${process.env.NEXT_PUBLIC_API_URL}/webhooks/razorpay/${userInfo.userId}`;
 
   return (
     <main className="p-8 max-w-2xl mx-auto">
