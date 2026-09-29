@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
 });
@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "RazorLens",
-  description: "Inspect and debug Razorpay webhooks in real time.",
+  description: "Verify every webhook Razorpay sends you.",
 };
 
 export default function RootLayout({
@@ -29,13 +29,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-body`}
+        className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable} font-body`}
       >
         {children}
       </body>
     </html>
-    
   );
 }
